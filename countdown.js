@@ -2,12 +2,16 @@ var hours = document.querySelector('#hours')
 var minutes = document.querySelector('#minutes')
 var seconds = document.querySelector('#seconds')
 var countdown = document.querySelector('.countdown')
-var newYears = new Date(1640991600000)
-var phraseDisplayer = document.querySelector('#randomphrase') 
+var newYears = new Date(	1640960838000) // 1640991600000
+var phraseDisplayer = document.querySelector('#randomphrase')
+var song = new Audio("song.mp3")
 var isBlinkToggled = false
+var isSongPlaying = false
+let all = document.querySelectorAll(".container *")
 
 const container = document.querySelector('.container')
-const fireworks = new Fireworks(container, {
+const fireworks = new Fireworks(container,
+    {
       rocketsPoint: 50,
       hue: { min: 0, max: 360 },
       delay: { min: 5, max: 15 },
@@ -46,8 +50,17 @@ function updateTime()
 {
     let timeLeft = newYears - new Date()
 
-    if (timeLeft < 60000)
-    countdown.classList.add("almost")
+    if (timeLeft < 60000 && !isBlinkToggled)
+    {
+        countdown.classList.add("almost")
+        isBlinkToggled = true
+    }
+
+    if (timeLeft < 19000 && !isSongPlaying)
+    {
+        isSongPlaying = true
+        song.play()
+    }
 
     if (timeLeft < 1000)
     {
@@ -57,6 +70,9 @@ function updateTime()
         fireworks.start()
         phraseDisplayer.innerHTML = "SI SBOCCIA"
         countdown.classList.remove("almost")
+        all.forEach(element => {
+            element.classList.add("party")
+        })
         return
     }
 

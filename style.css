@@ -28,7 +28,7 @@ main
     font-size: 15rem;
     font-weight: bold;
     margin: auto;
-    width: max-content;
+    width: 100%;
     overflow: hidden;
     position: relative;
     text-shadow: 0px 0px 10px #FFF;
@@ -119,4 +119,60 @@ section
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.container *
+{
+    z-index: -1;
+}
+
+@keyframes partycolors
+{
+    100%,0%{
+        color: rgb(255,0,0); text-shadow: 0px 0px 10px rgb(255,0,0); transform: scale(1);
+    }
+    8%{
+        color: rgb(255,127,0); text-shadow: 0px 0px 10px rgb(255,127,0);
+    }
+    16%{
+        color: rgb(255,255,0); text-shadow: 0px 0px 10px rgb(255,255,0);
+    }
+    25%{
+        color: rgb(127,255,0); text-shadow: 0px 0px 10px rgb(127,255,0);
+    }
+    33%{
+        color: rgb(0,255,0); text-shadow: 0px 0px 10px rgb(0,255,0);
+    }
+    41%{
+        color: rgb(0,255,127); text-shadow: 0px 0px 10px rgb(0,255,127);
+    }
+    50%{
+        color: rgb(0,255,255); text-shadow: 0px 0px 10px rgb(0,255,255); transform: scale(1.1);
+    }
+    58%{
+        color: rgb(0,127,255); text-shadow: 0px 0px 10px rgb(0,127,255);
+    }
+    66%{
+        color: rgb(0,0,255); text-shadow: 0px 0px 10px rgb(0,0,255);
+    }
+    75%{
+        color: rgb(127,0,255); text-shadow: 0px 0px 10px rgb(127,0,255);
+    }
+    83%{
+        color: rgb(255,0,255); text-shadow: 0px 0px 10px rgb(255,0,255);
+    }
+    91%{
+        color: rgb(255,0,127); text-shadow: 0px 0px 10px rgb(255,0,127);
+    }
+}
+
+@keyframes dance
+{
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+}
+
+.party
+{
+    animation: partycolors 1s infinite, dance .5s infinite;
 }
